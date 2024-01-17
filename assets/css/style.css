@@ -44,9 +44,38 @@ body {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: var(--bs-body-bg);
+    background-color: white;
     background-clip: padding-box;
     border: var(--bs-border-width) solid var(--bs-border-color);
     border-radius: var(--bs-border-radius);
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+    border-color: #FCECA4;
+    box-shadow: 0 1px 1px #FCECA4 inset, 0 0 8px #FCECA4;
+    outline: 0 none;
+}
+
+.naBrand {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    pointer-events: none;
 }

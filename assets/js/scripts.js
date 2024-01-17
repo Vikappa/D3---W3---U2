@@ -121,6 +121,9 @@ const addToCart = function (x) {
 
 const startRender = function (arrayLibriDaRenderizzare) {
     mainRow.innerHTML = ``
+    mainRow.classList.add('bg-white')
+    mainRow.classList.add('bg-opacity-50')
+    mainRow.classList.add('rounded-3')
     let stringaFinale = ``
     mainContainer.className = `container`
     for (let index = 0; index < arrayLibriDaRenderizzare.length; index++) {
