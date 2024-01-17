@@ -33,6 +33,21 @@ document.getElementsByTagName('form')[0].addEventListener('submit', function (e)
     mainRow.innerHTML = stringaFinale
 })
 
+function casellaRicercaUpdate() {
+    let arrayFiltrato = listaLibriPerEsecuzione.filter(function (libro) {
+        return libro.title.toLowerCase().includes(casellaRicerca.value.toLowerCase())
+    })
+
+    mainRow.innerHTML = ``
+    let stringaFinale = ``
+
+    for (let index = 0; index < arrayFiltrato.length; index++) {
+        let book = new Book(arrayFiltrato[index].asin, arrayFiltrato[index].title, arrayFiltrato[index].img, arrayFiltrato[index].price, arrayFiltrato[index].category, index)
+        stringaFinale += `${book.buildCard()}`
+    }
+
+    mainRow.innerHTML = stringaFinale
+}
 
 const refreshSchermataLibri = function () {
     mainRow.innerHTML = ``
@@ -206,3 +221,7 @@ refreshCartScreen()
 window.addEventListener('beforeunload', (event) => {
     saveStorage()
 })
+casellaRicerca.addEventListener('input', casellaRicercaUpdate);
+
+
+
