@@ -85,6 +85,7 @@ const removeFromCart = function (x) {
     if (carrello.length === 0) {
         cartRow.innerHTML = ``
     }
+    saveStorage()
 }
 
 const refreshCartScreen = function () {
@@ -118,11 +119,24 @@ const refreshCartScreen = function () {
 }
 
 const addToCart = function (x) {
-
     carrello.push(listaLibriPerEsecuzione[x])
     refreshCartScreen()
+    saveStorage()
 }
 
+const loadStorage = function () {
+    let memoriaStringata = localStorage.getItem("memoriaVirtualBookShelf")
+    let carrelloCaricato = [...JSON.parse(memoriaStringata)]
+    for (let i = 0; i < carrelloCaricato.length; i++) {
+        carrello.push(carrelloCaricato[i])
+    }
+}
+
+const saveStorage = function () {
+    let carrelloDaSalvare = JSON.stringify(carrello)
+    localStorage.clear()
+    localStorage.setItem("memoriaVirtualBookShelf", carrelloDaSalvare)
+}
 
 const startRender = function (arrayLibriDaRenderizzare) {
     mainRow.innerHTML = ``
@@ -145,7 +159,6 @@ const start = function () {
     })
         .then((response) => {
             if (response.ok) {
-                console.log('la fetch è finita bene!')
                 return response.json()
             } else {
                 console.log("la fetch non è finita come ce l'aspettavamo")
@@ -166,14 +179,9 @@ const start = function () {
 
 }
 start()
+loadStorage()
 refreshCartScreen()
 
-
-document.getElementById('btnReset').addEventListener("click", function () {
-    localStorage.clear()
-})
-
 window.addEventListener('beforeunload', (event) => {
-    event.preventDefault()
-
+    saveStorage()
 })
