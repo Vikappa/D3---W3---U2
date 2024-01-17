@@ -69,6 +69,14 @@ const totalPrice = function () {
     return ritorno
 }
 
+const removeFromCart = function (x) {
+    carrello.splice(x, 1)
+    refreshCartScreen()
+    if (carrello.length === 0) {
+        cartRow.innerHTML = ``
+    }
+}
+
 const refreshCartScreen = function () {
     cartRow.innerHTML = ``
     let stringaFinale = `<div class="card">
@@ -81,7 +89,9 @@ const refreshCartScreen = function () {
     </div>
   </div>`
     for (let index = 0; index < carrello.length; index++) {
-        stringaFinale = stringaFinale + `<p class="card-text fs-6">${carrello[index].title}, €${carrello[index].price}</p>
+        stringaFinale = stringaFinale + `<p class="card-text fs-6">${carrello[index].title}, €${carrello[index].price}
+        <span class="badge bg-danger" onclick=removeFromCart(${index}) >Rimuovi</span>
+        </p>
         `
     }
     stringaFinale = stringaFinale + finaleStringa
@@ -134,3 +144,8 @@ const start = function () {
 
 }
 start()
+
+document.getElementById('btnReset').addEventListener("click", function () {
+    localStorage.clear()
+})
+
