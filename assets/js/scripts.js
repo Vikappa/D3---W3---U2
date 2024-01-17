@@ -38,7 +38,7 @@ class Book {
     }
 
     buildCard() {
-        return `<div class="card col-3 m-3 p-0" style="width: 18rem;">
+        return `<div class="card col-2 col-md-4 col-lg-3 m-3 p-0" style="width: 18rem;">
         <img src="${this.img}" class="card-img-top" alt="Copertina di ${this.title}">
         <div class="card-body">
           <h5 class="card-title">${this.title}</h5>
@@ -85,7 +85,7 @@ const removeFromCart = function (x) {
 
 const refreshCartScreen = function () {
     if (carrello.length > 0) {
-        linkCarrello.classList = `nav-link dropdown-toggle me-3 text-black`
+        linkCarrello.classList = `nav-link dropdown-toggle me-3 text-white`
 
     } else {
         linkCarrello.classList = `nav-link disabled dropdown-toggle me-3 text-secondary`

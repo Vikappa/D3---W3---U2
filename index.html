@@ -4,7 +4,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Library Shop</title>
+    <title>Virtual BookShelf</title>
+    <meta name="description" content="Esempio di negozio di libri online di Vincenzo Costantini">
+
+    <link rel="icon" href="./assets/media/Icon.png" type="image/png">
+    <meta property="og:title" content="Esempio di negozio di libri online di Vincenzo Costantini" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vikappa.github.io/D3---W3---U2/" />
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/Vikappa/D3---W3---U2/main/assets/media/preview.png" />
+    <meta property="og:description" content="Esempio di negozio di libri online di Vincenzo Costantini" />
+    <meta name="twitter:card" content="Sito internet esercizio">
+    <meta name="twitter:title" content="Virtual BookShelf">
+    <meta name="twitter:description" content="Esempio di negozio di libri online di Vincenzo Costantini">
+    <meta name="twitter:image"
+        content="https://raw.githubusercontent.com/Vikappa/D3---W3---U2/main/assets/media/preview.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -13,29 +27,28 @@
     <link rel="stylesheet" href="assets/css/animazioni.css">
 </head>
 
-<body class="bg-dark d-flex py-5">
+<body class="d-flex py-5">
     <div class="d-flex align-items-center gap-2 z-1"><button type="button" class="btn btn-info "
             style="position: fixed; bottom:1vh; right: 1vh;" id="btnReset">Reset LocalStorage <i
                 class="bi bi-trash3"></i></button>
     </div>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary position-fixed w-100 top-0 z-2">
+    <nav class="navbar navbar-expand-lg position-fixed w-100 top-0 z-2">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="./assets/media/Icon.png" height="48px"></a>
-            <form class="d-none d-sm-flex align-items-center" role="search">
-                <!-- Gruppo Dropdown Carrello -->
+            <form class="d-flex align-items-center" role="search">
                 <div class="dropdown">
                     <a class="nav-link disabled dropdown-toggle me-3 text-secondary" href="#" role="button"
                         id="linkCarrello" data-bs-toggle="dropdown" aria-expanded="false">
                         Carrello (€0)
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="linkCarrello" id="cartRow">
-                        <!-- Elementi della dropdown -->
                     </ul>
                 </div>
 
-                <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Cerca</button>
+                <input class="form-control me-2 d-none d-sm-flex " type="search" placeholder="Cerca"
+                    aria-label="Search">
+                <button class="btn btn-outline-success d-none d-sm-flex " type="submit">Cerca</button>
             </form>
         </div>
     </nav>
