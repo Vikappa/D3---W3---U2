@@ -3,7 +3,7 @@
 <p align="center">
   <img src="./assets/media/IconaReadme.png" alt="Virtual BookShelf Image" height="250px">
 </p>
-Virtual BookShelf è un progetto che mira a creare un'esperienza utente interattiva per esplorare e acquistare libri online. Ho usato **Bootstrap** per lo sviluppo dell'interfaccia utente. Il cuore del progetto si basa su **JavaScript**, che integra la logica necessaria.
+Virtual BookShelf è un progetto che mira a creare un'esperienza utente interattiva per esplorare e acquistare libri online. Ho usato Bootstrap per lo sviluppo dell'interfaccia utente. Il cuore del progetto si basa su JavaScript, che integra la logica necessaria.
 
 ## Funzionamento 
 
