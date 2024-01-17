@@ -9,6 +9,10 @@ const carrello = []
 
 const recastTime = 5000 //ms
 
+const linktocard = function (asinInput) {
+    document.getElementById(`card${asinInput}`).scrollIntoView({ behavior: 'smooth' })
+}
+
 const refreshSchermataLibri = function () {
     mainRow.innerHTML = ``
     let stringaFinale = ``
@@ -38,11 +42,11 @@ class Book {
     }
 
     buildCard() {
-        return `<div class="card col-2 col-md-4 col-lg-3 m-3 p-0" style="width: 18rem;">
-        <img src="${this.img}" class="card-img-top" alt="Copertina di ${this.title}">
+        return `<div class="card col-2 col-md-4 col-lg-3 m-3 p-0" style="width: 18rem;" id="card${this.asin}">
+        <img src="${this.img}" class="card-img-top img-fluid" alt="Copertina di ${this.title}">
         <div class="card-body">
           <h5 class="card-title">${this.title}</h5>
-          <p class="card-text">Categoria: ${this.category}</p>
+          <p class="card-text d-none d-md-inline">Categoria: ${this.category}</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Prezzo: €${this.price}</li>
@@ -55,7 +59,7 @@ class Book {
   <button type="button" onclick=removeFromShelfScreen(${this.indexarray}) class="btn btn-link">Scarta</button>
           </div>
         
-        <p class="px-3 mb-0 pb-0 text-center">asin ${this.asin}</p>
+        <p class="px-3 mb-0 pb-0 text-center" style="font-size:0.75rem">asin ${this.asin}</p>
       </div>`
     }
 
@@ -96,14 +100,15 @@ const refreshCartScreen = function () {
     cartRow.innerHTML = ``
     let stringaFinale = ``
 
-    let finaleStringa = `<hr class="dropdown-divider"><a href="#" class="btn btn-primary">€${totalPrice()}</a>
+    let finaleStringa = `<hr class="dropdown-divider"><div class="ps-3"><a href="#" class="btn btn-primary px-2 py-0">€${totalPrice()}</a>
+    </div>
     </div>
   </div>`
 
     for (let index = 0; index < carrello.length; index++) {
         stringaFinale = stringaFinale +
-            `<li><a class="dropdown-item">${carrello[index].title}, €${carrello[index].price}<p class="card-text fs-6">
-        <span class="badge bg-danger" onclick=removeFromCart(${index}) >Rimuovi</span>
+            `<li onclick=linktocard(${carrello[index].asin})><a class="dropdown-item">${carrello[index].title}, €${carrello[index].price}<p class="card-text fs-6">
+        <span class="badge p-1 bg-danger" onclick=removeFromCart(${index}) >Rimuovi</span>
         </p></a></li>`
     }
 
