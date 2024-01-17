@@ -17,11 +17,31 @@
     <div class="d-flex align-items-center gap-2 z-1"><button type="button" class="btn btn-info "
             style="position: fixed; bottom:1vh; right: 1vh;" id="btnReset">Reset LocalStorage <i
                 class="bi bi-trash3"></i></button>
-
     </div>
 
+    <nav class="navbar navbar-expand-lg bg-body-tertiary position-fixed w-100 top-0 z-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="./assets/media/Icon.png" height="48px"></a>
+            <form class="d-none d-sm-flex align-items-center" role="search">
+                <!-- Gruppo Dropdown Carrello -->
+                <div class="dropdown">
+                    <a class="nav-link disabled dropdown-toggle me-3 text-secondary" href="#" role="button"
+                        id="linkCarrello" data-bs-toggle="dropdown" aria-expanded="false">
+                        Carrello (€0)
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="linkCarrello" id="cartRow">
+                        <!-- Elementi della dropdown -->
+                    </ul>
+                </div>
 
-    <main class="container vh-100 d-flex justify-content-center align-items-center col-10" id="mainContainer">
+                <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Cerca</button>
+            </form>
+        </div>
+    </nav>
+
+    <main class="container vh-100 d-flex justify-content-center align-items-center col-12" id="mainContainer"
+        style="margin-top: 90px;">
         <div class="row" id="mainSpinner">
             <div class="lds-spinner">
                 <div></div>
@@ -39,10 +59,6 @@
             </div>
         </div>
     </main>
-
-    <aside class="container col-2">
-        <div class="row flex-column" id="cartRow"></div>
-    </aside>
 
     <script src="./assets/js/scripts.js"></script>
     <script src="./assets/js/domScripts.js"></script>

@@ -1,6 +1,8 @@
 const mainContainer = document.getElementById('mainContainer')
 const mainRow = document.getElementById('mainSpinner')
 const cartRow = document.getElementById('cartRow')
+const linkCarrello = document.getElementById('linkCarrello')
+const dropCarrello = document.getElementById('dropCarrello')
 document.getElementById('')
 let listaLibriPerEsecuzione = []
 const carrello = []
@@ -46,7 +48,7 @@ class Book {
           <li class="list-group-item">Prezzo: €${this.price}</li>
         </ul>
         <div class="card-body d-flex justify-content-between m-0 p-1">
-        <a href="#" class="card-link"><button type="button" onclick=addToCart(${this.indexarray}) class="btn btn-primary pt-1 m-1"
+        <a class="card-link"><button type="button" onclick=addToCart(${this.indexarray}) class="btn btn-primary pt-1 m-1"
         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
   Aggiungi al carrello
   <i class="bi bi-bag-plus"></i></button></a>
@@ -70,7 +72,7 @@ const totalPrice = function () {
         ritorno += carrello[g].price
     }
 
-    return ritorno
+    return ritorno.toFixed(2)
 }
 
 const removeFromCart = function (x) {
@@ -82,23 +84,31 @@ const removeFromCart = function (x) {
 }
 
 const refreshCartScreen = function () {
+    if (carrello.length > 0) {
+        linkCarrello.classList = `nav-link dropdown-toggle me-3 text-black`
+
+    } else {
+        linkCarrello.classList = `nav-link disabled dropdown-toggle me-3 text-secondary`
+        cartRow.classList.remove('show')
+    }
+    linkCarrello.textContent = `Carrello (€${totalPrice()})`
+
     cartRow.innerHTML = ``
-    let stringaFinale = `<div class="card">
-    <div class="card-header">
-      Carrello
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">I tuoi libri: </h5>`
-    let finaleStringa = `<a href="#" class="btn btn-primary">€${totalPrice()}</a>
+    let stringaFinale = ``
+
+    let finaleStringa = `<hr class="dropdown-divider"><a href="#" class="btn btn-primary">€${totalPrice()}</a>
     </div>
   </div>`
+
     for (let index = 0; index < carrello.length; index++) {
-        stringaFinale = stringaFinale + `<p class="card-text fs-6">${carrello[index].title}, €${carrello[index].price}
+        stringaFinale = stringaFinale +
+            `<li><a class="dropdown-item">${carrello[index].title}, €${carrello[index].price}<p class="card-text fs-6">
         <span class="badge bg-danger" onclick=removeFromCart(${index}) >Rimuovi</span>
-        </p>
-        `
+        </p></a></li>`
     }
+
     stringaFinale = stringaFinale + finaleStringa
+
     cartRow.innerHTML = stringaFinale
 }
 
@@ -148,6 +158,8 @@ const start = function () {
 
 }
 start()
+refreshCartScreen()
+
 
 document.getElementById('btnReset').addEventListener("click", function () {
     localStorage.clear()
