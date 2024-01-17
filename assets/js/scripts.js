@@ -59,6 +59,10 @@ class Book {
 
 }
 
+const saveCart = function () {
+
+}
+
 const totalPrice = function () {
     let ritorno = 0
 
@@ -149,3 +153,7 @@ document.getElementById('btnReset').addEventListener("click", function () {
     localStorage.clear()
 })
 
+window.addEventListener('beforeunload', (event) => {
+    event.preventDefault()
+
+})
