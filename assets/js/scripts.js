@@ -3,6 +3,7 @@ const mainRow = document.getElementById('mainSpinner')
 const cartRow = document.getElementById('cartRow')
 const linkCarrello = document.getElementById('linkCarrello')
 const dropCarrello = document.getElementById('dropCarrello')
+const casellaRicerca = document.getElementById('inputCerca')
 document.getElementById('')
 let listaLibriPerEsecuzione = []
 const carrello = []
@@ -12,6 +13,26 @@ const recastTime = 5000 //ms
 const linktocard = function (asinInput) {
     document.getElementById(`card${asinInput}`).scrollIntoView({ behavior: 'smooth' })
 }
+
+document.getElementsByTagName('form')[0].addEventListener('submit', function (e) {
+    e.preventDefault(); // fermiamo la pagina dal refresh
+    console.log(casellaRicerca.value)
+
+    let arrayFiltrato = listaLibriPerEsecuzione.filter(function (libro) {
+        return libro.title.toLowerCase().includes(casellaRicerca.value.toLowerCase())
+    })
+
+    mainRow.innerHTML = ``
+    let stringaFinale = ``
+
+    for (let index = 0; index < arrayFiltrato.length; index++) {
+        let book = new Book(arrayFiltrato[index].asin, arrayFiltrato[index].title, arrayFiltrato[index].img, arrayFiltrato[index].price, arrayFiltrato[index].category, index)
+        stringaFinale += `${book.buildCard()}`
+    }
+
+    mainRow.innerHTML = stringaFinale
+})
+
 
 const refreshSchermataLibri = function () {
     mainRow.innerHTML = ``
